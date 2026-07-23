@@ -22,7 +22,7 @@ leur fonctionnement, juste à la façon dont on les héberge/versionne.
 cd server
 npm install
 cp .env.example .env   # renseigne DATABASE_URL, JWT_SECRET, etc.
-npm run prisma:migrate
+npm run prisma:push
 npm run dev             # http://localhost:5000
 
 # Terminal 2 — frontend

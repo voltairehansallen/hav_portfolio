@@ -10,7 +10,7 @@ Node.js · Express · Prisma · MySQL · JWT · bcrypt
 1. `npm install`
 2. Copier `.env.example` en `.env` et renseigner `DATABASE_URL` (ex: instance MySQL sur Railway)
 3. `npm run prisma:generate`
-4. `npm run prisma:migrate` — crée la table `users` en base
+4. `npm run prisma:push` — crée la table `users` en base
 5. `npm run dev`
 
 ## Vérifier que ça fonctionne
