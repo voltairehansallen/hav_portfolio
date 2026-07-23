@@ -1,0 +1,158 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+// Singleton : une seule ligne, éditée depuis le dashboard (module "About")
+model About {
+  id        Int      @id @default(autoincrement())
+  name      String?
+  headline  String
+  bio       String   @db.Text
+  humility  String   @db.Text // texte lié à la valeur "Humility"
+  ambition  String   @db.Text // texte lié à la valeur "Ambition"
+  vision    String   @db.Text // texte lié à la valeur "Vision"
+  mission   String?  @db.Text
+  philosophy String? @db.Text
+  quote     String?
+  photoUrl  String?
+  cvUrl     String?
+  updatedAt DateTime @updatedAt
+
+  @@map("about")
+}
+
+model Skill {
+  id       Int    @id @default(autoincrement())
+  name     String
+  category String // ex: "Data Analysis", "Backend", "Outils"
+  level    Int    @default(0) // 0-100, utilisé pour une barre de progression
+  icon     String?
+  order    Int    @default(0)
+
+  @@map("skills")
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  title       String
+  slug        String   @unique
+  description String   @db.Text
+  content     String?  @db.Text // description longue, markdown possible
+  techStack   Json // ex: ["Node.js", "MySQL", "Prisma"]
+  repoUrl     String?
+  demoUrl     String?
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+  media       Media[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("projects")
+}
+
+model Certification {
+  id            Int      @id @default(autoincrement())
+  title         String
+  issuer        String
+  issueDate     DateTime
+  credentialUrl String?
+  fileUrl       String? // certificat uploadé (PDF/image)
+  order         Int      @default(0)
+  createdAt     DateTime @default(now())
+
+  @@map("certifications")
+}
+
+model Education {
+  id           Int       @id @default(autoincrement())
+  school       String
+  degree       String
+  fieldOfStudy String?
+  startDate    DateTime
+  endDate      DateTime?
+  description  String?   @db.Text
+  order        Int       @default(0)
+
+  @@map("education")
+}
+
+model Experience {
+  id          Int       @id @default(autoincrement())
+  title       String
+  company     String
+  location    String?
+  startDate   DateTime
+  endDate     DateTime?
+  description String?   @db.Text
+  order       Int       @default(0)
+
+  @@map("experience")
+}
+
+// Timeline "Journey" — étapes marquantes du parcours
+model JourneyEntry {
+  id          Int      @id @default(autoincrement())
+  date        DateTime
+  title       String
+  description String   @db.Text
+  icon        String?
+  order       Int      @default(0)
+
+  @@map("journey_entries")
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  subject   String?
+  message   String   @db.Text
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@map("messages")
+}
+
+model SocialLink {
+  id       Int    @id @default(autoincrement())
+  platform String // ex: "LinkedIn", "GitHub"
+  url      String
+  icon     String?
+  order    Int    @default(0)
+
+  @@map("social_links")
+}
+
+enum MediaType {
+  IMAGE
+  PDF
+  LOGO
+}
+
+// Fichiers uploadés (images de projets, logos, certificats...)
+model Media {
+  id        Int       @id @default(autoincrement())
+  url       String
+  filename  String
+  type      MediaType
+  project   Project?  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId Int?
+  createdAt DateTime  @default(now())
+
+  @@map("media")
+}

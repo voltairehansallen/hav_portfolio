@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Palette centralisée — toutes les couleurs du site dérivent d'ici.
+       Format "R G B" (sans virgules) pour être utilisable avec rgb(var(--x) / <alpha>)
+       Palette monochrome : Cinder / Chimney / Sea Lion / Blue Dolphin / Black Metal */
+    --color-bg: 36 41 46; /* #24292E — Cinder */
+    --color-panel: 55 61 66; /* entre Chimney et Cinder — surface élevée */
+    --color-panel-border: 74 81 86; /* #4A5156 — Chimney */
+
+    /* Échelle "primary" — les 5 couleurs de la palette forment une échelle de
+       luminosité quasi parfaite, du plus clair (Blue Dolphin) au plus sombre (Black Metal) */
+    --color-primary-50: 189 199 206; /* #BDC7CE — Blue Dolphin */
+    --color-primary-100: 158 168 176;
+    --color-primary-200: 128 138 146; /* #808A92 — Sea Lion */
+    --color-primary-300: 101 109 116;
+    --color-primary-400: 74 81 86; /* #4A5156 — Chimney */
+    --color-primary-500: 55 61 66;
+    --color-primary-600: 45 51 56;
+    --color-primary-700: 36 41 46; /* #24292E — Cinder */
+    --color-primary-800: 20 23 25;
+    --color-primary-900: 5 5 5; /* #050505 — Black Metal */
+
+    --color-muted: 101 109 116; /* primary-300 — texte secondaire lisible */
+    --color-online: 189 199 206; /* pas de vert dans cette palette — utilise l'accent le plus clair */
+    --color-ambition: 128 138 146; /* #808A92 — Sea Lion, accent secondaire */
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-white font-body antialiased;
+    background-image: theme('backgroundImage.grid');
+    background-size: theme('backgroundSize.grid');
+  }
+
+  /* Focus clavier toujours visible — accessibilité, jamais supprimé */
+  :focus-visible {
+    outline: 2px solid theme('colors.vision');
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: theme('colors.vision');
+    color: theme('colors.bg');
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
