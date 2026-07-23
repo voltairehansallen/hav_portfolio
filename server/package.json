@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "nodemon src/app.js",
-    "start": "prisma migrate deploy && node src/app.js",
+    "start": "prisma migrate deploy && (node prisma/seed.js || true) && node src/app.js",
     "postinstall": "prisma generate",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
