@@ -45,6 +45,3 @@ repo GitHub, via le paramètre **Root Directory** :
 3. Crée un deuxième service depuis le **même repo** → **Root Directory** → `client`
 4. Le reste de la configuration (variables d'environnement, domaines) est identique à un
    déploiement multi-repo classique.
-"# hav_portfolio" 
-"# hav_portfolio" 
-"# hav_portfolio" 

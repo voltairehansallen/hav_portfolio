@@ -25,10 +25,20 @@ const mono = JetBrains_Mono({
   weight: ['400', '500'],
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+const SITE_URL = /^https?:\/\//i.test(rawSiteUrl) ? rawSiteUrl : `https://${rawSiteUrl}`;
+
+function safeUrl(value, fallback) {
+  try {
+    return new URL(value);
+  } catch {
+    console.warn(`⚠️  "${value}" n'est pas une URL valide — repli sur ${fallback}.`);
+    return new URL(fallback);
+  }
+}
 
 export const metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: safeUrl(SITE_URL, 'http://localhost:3000'),
   title: {
     default: 'HAV OS — Portfolio',
     template: '%s — HAV OS',

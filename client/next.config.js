@@ -1,6 +1,16 @@
 /** @type {import('next').NextConfig} */
-const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
-const apiHost = new URL(apiUrl);
+const rawApiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const apiUrl = /^https?:\/\//i.test(rawApiUrl) ? rawApiUrl : `https://${rawApiUrl}`;
+
+let apiHost;
+try {
+  apiHost = new URL(apiUrl);
+} catch {
+  console.warn(
+    `⚠️  NEXT_PUBLIC_API_URL="${rawApiUrl}" n'est pas une URL valide — vérifie cette variable d'environnement. Repli sur localhost.`
+  );
+  apiHost = new URL('http://localhost:5000/api');
+}
 
 const nextConfig = {
   images: {
