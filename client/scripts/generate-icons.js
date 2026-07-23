@@ -2,10 +2,10 @@ const fs = require('fs');
 const path = require('path');
 const zlib = require('zlib');
 
-// Couleurs HAV OS (palette monochrome — Cinder / Blue Dolphin / Sea Lion)
-const BG = [36, 41, 46]; // #24292E Cinder
-const CYAN = [189, 199, 206]; // #BDC7CE Blue Dolphin (accent principal)
-const CORAL = [128, 138, 146]; // #808A92 Sea Lion (accent secondaire)
+// Couleurs HAV OS (palette d'origine — bleu-nuit / cyan / corail)
+const BG = [10, 14, 20]; // #0A0E14
+const CYAN = [77, 232, 255]; // #4DE8FF
+const CORAL = [255, 107, 74]; // #FF6B4A
 
 function createCanvas(width, height, bg) {
   const buf = Buffer.alloc(width * height * 4);

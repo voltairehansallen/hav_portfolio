@@ -6,27 +6,26 @@
   :root {
     /* Palette centralisée — toutes les couleurs du site dérivent d'ici.
        Format "R G B" (sans virgules) pour être utilisable avec rgb(var(--x) / <alpha>)
-       Palette monochrome : Cinder / Chimney / Sea Lion / Blue Dolphin / Black Metal */
-    --color-bg: 36 41 46; /* #24292E — Cinder */
-    --color-panel: 55 61 66; /* entre Chimney et Cinder — surface élevée */
-    --color-panel-border: 74 81 86; /* #4A5156 — Chimney */
+       Palette HAV OS d'origine : bleu-nuit / cyan / corail */
+    --color-bg: 10 14 20; /* #0A0E14 */
+    --color-panel: 18 24 31; /* #12181F */
+    --color-panel-border: 30 39 51; /* #1E2733 */
 
-    /* Échelle "primary" — les 5 couleurs de la palette forment une échelle de
-       luminosité quasi parfaite, du plus clair (Blue Dolphin) au plus sombre (Black Metal) */
-    --color-primary-50: 189 199 206; /* #BDC7CE — Blue Dolphin */
-    --color-primary-100: 158 168 176;
-    --color-primary-200: 128 138 146; /* #808A92 — Sea Lion */
-    --color-primary-300: 101 109 116;
-    --color-primary-400: 74 81 86; /* #4A5156 — Chimney */
-    --color-primary-500: 55 61 66;
-    --color-primary-600: 45 51 56;
-    --color-primary-700: 36 41 46; /* #24292E — Cinder */
-    --color-primary-800: 20 23 25;
-    --color-primary-900: 5 5 5; /* #050505 — Black Metal */
+    /* Échelle "primary" dérivée du cyan #4DE8FF */
+    --color-primary-50: 224 250 255;
+    --color-primary-100: 193 246 255;
+    --color-primary-200: 141 240 255;
+    --color-primary-300: 108 236 255;
+    --color-primary-400: 90 233 255;
+    --color-primary-500: 77 232 255; /* #4DE8FF — accent principal */
+    --color-primary-600: 45 195 219;
+    --color-primary-700: 27 154 175;
+    --color-primary-800: 16 112 128;
+    --color-primary-900: 8 71 82;
 
-    --color-muted: 101 109 116; /* primary-300 — texte secondaire lisible */
-    --color-online: 189 199 206; /* pas de vert dans cette palette — utilise l'accent le plus clair */
-    --color-ambition: 128 138 146; /* #808A92 — Sea Lion, accent secondaire */
+    --color-muted: 139 149 167; /* #8B95A7 */
+    --color-online: 61 220 151; /* #3DDC97 */
+    --color-ambition: 255 107 74; /* #FF6B4A */
   }
 
   html {

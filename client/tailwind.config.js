@@ -37,7 +37,7 @@ module.exports = {
         mono: ['var(--font-mono)'],
       },
       backgroundImage: {
-        grid: 'linear-gradient(rgba(6,214,160,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(6,214,160,0.06) 1px, transparent 1px)',
+        grid: 'linear-gradient(rgba(77,232,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(77,232,255,0.06) 1px, transparent 1px)',
       },
       backgroundSize: {
         grid: '48px 48px',
