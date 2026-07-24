@@ -9,6 +9,12 @@ import Journey from '../components/sections/Journey';
 import Contact from '../components/sections/Contact';
 import api from '../lib/api';
 
+// La page dépend de données qui changent via le dashboard (About, Skills, Projects...).
+// On utilise Axios ici, pas le fetch natif de Next.js — Next n'a donc aucun moyen de
+// détecter automatiquement cette dépendance et figerait la page en statique au build,
+// avec les données du moment du déploiement, sans jamais se mettre à jour ensuite.
+export const dynamic = 'force-dynamic';
+
 async function getAbout() {
   try {
     const { data } = await api.get('/about');
